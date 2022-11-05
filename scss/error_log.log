@@ -1,0 +1,7 @@
+11/01/22 12:57:38: style.scss - `web-fonts` file not found for @import: _variables.scss on line 3, at column 1
+Call Stack:
+#0 import _variables.scss style.scss on line 1
+11/01/22 1:29:39: style.scss - unclosed block: failed at `` /var/www/html/wp-content/themes/publicinteresttown/scss/style.scss on line 31, at column 0
+11/01/22 1:37:03: style.scss - parse error: failed at `&: hover {` /var/www/html/wp-content/themes/publicinteresttown/scss/style.scss on line 55, at column 5
+11/02/22 12:10:12: style.scss - ".wp-block-search__button" failed to @extend "%button". The selector "%button" was not found.: style.scss on line 144, at column 5
+11/03/22 3:14:18: style.scss - ".site-branding" failed to @extend "%standard-padding". The selector "%standard-padding" was not found.: style.scss on line 116, at column 5

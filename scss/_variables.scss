@@ -1,0 +1,231 @@
+$font-path: '/wp-content/themes/publicinteresttown/assets/fonts/';
+
+@import "web-fonts-local";
+
+/*** Variables ***/
+
+/* Colors */
+$purple : #8255A6;
+$lightpurple: #dbcde1;
+$teal : rgba(17, 198, 169, 1);
+$lemon : #ffc107;
+$sienna : #D9503C;
+$orange : #ffb676;
+$khaki : #e0b86f;
+$white : #fffcf6;
+$dark: #2f2f35;
+$blue: #4f9cff;
+$iceblue: #4abaf7;
+$green: #4a8a16;
+$red: #ba2618;
+
+$primary-color: $blue;
+
+$link-color: $primary-color;
+$link-hover-color: $primary-color;
+$link-hover-decoration: none;
+
+$main-background: $white;
+
+$nav-link-hover-bg: rgba(#fff, 0.3);
+
+
+/* Sizes */
+$page-width: 1140px;
+$column-width: 380px;
+
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+
+$grid-gutter-width: 15px;
+
+$border-weight-thin: 2px;
+$border-weight-thick: 2px;
+
+/* Fonts */
+// @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Quicksand:wght@400;700&display=swap');
+@include web-fonts(
+  ("Montserrat", "montserrat", (700)),
+  ("Quicksand", "quicksand", (400, 700))
+);
+
+$main-font-stack: 'Quicksand', Verdana, Arial, sans-serif;
+$accent-font-stack: 'Montserrat', Helvetica, Arial, sans-serif;
+$code-font: monospace;
+
+
+// $font-weight-normal: normal !default;
+
+// $color-main-bg: #332e2b; // Warm Charcoal
+// $color-content-bg: #fbf7ea; // Parchment
+// $color-main-text: #332e2b; // Warm Charcoal
+// $color-main-link: #086EB1;
+
+// $font-family-serif: 'Merriweather', "Times New Roman", Times, serif !default;
+// $font-family-base: $font-family-serif;
+
+// $body-bg: $color-main-bg;
+// $text-color: $color-main-text;
+// $link-color: $color-main-link;
+// $link-hover-color: lighten($link-color, 15%);
+
+// $navbar-height: 40px;
+// $navbar-default-color: inherit;
+// $navbar-default-bg: $color-content-bg;
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (min-width: $breakpoint-md) {
+    max-width: $page-width + (2*$grid-gutter-width) + (2*$border-weight-thick);
+  }
+}
+
+@mixin standard-padding {
+  padding: 5px $grid-gutter-width;
+}
+
+%font-normal {
+  font-weight: 400;
+}
+
+%semibold {
+  font-weight: 600;
+}
+%bold {
+  font-weight: 700;
+}
+
+@mixin text-outline($color: #000, $size:1px) {
+  text-shadow:
+    (-1*$size) (-1*$size) 0 $color,
+    $size (-1*$size) 0 $color,
+    (-1*$size) $size 0 $color,
+    $size $size 0 $color;
+}
+
+
+@mixin shadow() {
+  box-shadow: 10px 0px rgba(00,00,00,0.4);
+}
+
+%shadow-float {
+  box-shadow: 5px 5px rgba(00,00,00,0.4);
+}
+
+%table-to-cards {
+  tbody {
+    display: flex;
+    flex-direction: row;
+  }
+
+  tr {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-right: 1rem;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  td {
+    display: block;
+  }
+}
+
+
+// Dimensions
+$bg-dot-size: 2px;
+$bg-dot-space: 4px;
+@mixin dotbg($dot-color, $bg-color: $white, $dot-size: $bg-dot-size, $dot-space: $bg-dot-space) {
+  background:
+    linear-gradient(90deg, $bg-color ($dot-space - $dot-size), transparent 1%) center,
+    linear-gradient($bg-color ($dot-space - $dot-size), transparent 1%) center,
+    $dot-color;
+  background-size: $dot-space $dot-space;
+}
+
+@mixin linebg($line-color, $bg-color: $white, $line-size: $bg-dot-size, $line-space: $bg-dot-size) {
+  background: repeating-linear-gradient(
+    45deg,
+    $line-color 0,
+    $line-color $line-size,
+    $bg-color $line-size,
+    $bg-color ($line-size+$line-space)
+  );
+}
+
+%major-border {
+  border: 2px solid $dark;
+  border-radius: 4px;
+
+  & > *:first-child {
+    border-top-right-radius: 2px;
+    border-top-left-radius: 2px;
+  }
+}
+
+%minor-border {
+  border: 1px solid $dark;
+  border-radius: 3px;
+}
+
+%responsive-flex {
+  display: flex;
+  flex-direction: column;
+  gap: $grid-gutter-width;
+
+  @media (min-width: $breakpoint-md) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+%rainbow {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 1) 0%,
+    rgba(255, 154, 0, 1) 10%,
+    rgba(208, 222, 33, 1) 20%,
+    rgba(79, 220, 74, 1) 30%,
+    rgba(63, 218, 216, 1) 40%,
+    rgba(47, 201, 226, 1) 50%,
+    rgba(28, 127, 238, 1) 60%,
+    rgba(95, 21, 242, 1) 70%,
+    rgba(186, 12, 248, 1) 80%,
+    rgba(251, 7, 217, 1) 90%,
+    rgba(255, 0, 0, 1) 100%
+  );
+}
+
+%progress {
+  background: linear-gradient(
+    45deg,
+    #fff 0%,
+    #fff 9%,
+    #f6a8b7 9%,
+    #f6a8b7 18%,
+    #5ccefa 18%,
+    #5ccefa 27%,
+    #784f16 27%,
+    #784f16 36%,
+    #000 36%,
+    #000 45%,
+    #e40303 45%,
+    #e40303 54%,
+    #ff8c00 54%,
+    #ff8c00 63%,
+    #ffed00 63%,
+    #ffed00 72%,
+    #008026 72%,
+    #008026 81%,
+    #004dff 81%,
+    #004dff 90%,
+    #750787 90%,
+    #750787 100%
+  );
+}

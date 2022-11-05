@@ -1,0 +1,262 @@
+@import "variables";
+
+/** Primary Element Styles **/
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $main-font-stack;
+}
+
+h1, h2, h3, h4, h5, h6, .title {
+  font-family: $accent-font-stack;
+  margin: 0 0 1rem;
+}
+
+a {
+  color: $blue;
+}
+
+/** Page Layout **/
+
+.site {
+  @extend .container;
+
+  gap: $grid-gutter-width;
+
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
+
+  @media (min-width: $breakpoint-md) {
+    display: grid;
+    grid-template-columns: 7fr 3fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "header header"
+      "main sidebar"
+      "footer footer";
+  }
+}
+
+.site-header {
+  grid-area: header;
+}
+
+.site-main {
+  grid-area: main;
+  @media (min-width: $breakpoint-md) {
+    margin-left: $grid-gutter-width;
+  }
+}
+
+.widget-area {
+  grid-area: sidebar;
+  @media (min-width: $breakpoint-md) {
+    margin-right: $grid-gutter-width;
+  }
+}
+
+.site-footer {
+  grid-area: footer;
+}
+
+/** Page Decoration **/
+
+body {
+  background-color: $lightpurple;
+}
+
+.site {
+  background-color: $white;
+  @extend %major-border;
+}
+
+.button {
+  display: inline-block;
+  position: relative;
+  top: 0;
+  color: $white;
+  background-color: $primary-color;
+  line-height: 1.5;
+  padding: 5px 10px;
+  margin: 0 0 0.25rem;
+  text-decoration: none;
+
+  box-shadow: rgba(0, 0, 0, 0.6) 3px 3px 4px;
+
+  transition: all 0.1s ease-in-out;
+  &:hover, &:active {
+    background-color: lighten($primary-color, 15%);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 2px;
+  }
+
+  @extend %minor-border;
+}
+
+button, input[type=submit] {
+  @extend .button;
+}
+
+/** Header **/
+
+.site-header {
+  border-bottom: 2px solid $dark;
+  margin-bottom: $grid-gutter-width;
+}
+
+.site-branding {
+  background: $primary-color;
+  color: $white;
+  @include standard-padding;
+}
+
+.site-title {
+  @extend %bold;
+
+  line-height: 1;
+  padding: 0px;
+
+  font-size: 2rem;
+  text-align: center;
+
+  @media (min-width: $breakpoint-md) {
+    font-size: 4rem;
+    text-align: left;
+  }
+
+  a {
+    background: $white;
+    // @extend %progress;
+    -webkit-text-stroke: 1px $dark;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+/** Nav **/
+
+.main-navigation {
+  @include standard-padding;
+  a {
+    font-weight: bold;
+  }
+}
+
+.menu {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+
+  display: flex;
+  gap: 10px $grid-gutter-width;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  a {
+    @extend .button;
+    wrap-text: nowrap;
+  }
+}
+
+/** RSS Sidebar **/
+
+.job {
+  @extend %minor-border;
+  margin-bottom: $grid-gutter-width;
+
+  &-header {
+    @include standard-padding;
+    display: block;
+    background-color: $primary-color;
+    color: $white;
+    border-bottom: 1px solid $dark;
+  }
+
+  &-description {
+    @include standard-padding;
+  }
+}
+
+.jobs-rss {
+  .notice {
+    margin-bottom: $grid-gutter-width;
+    font-size: 0.85rem;
+  }
+}
+
+/** Search **/
+.wp-block-search__inside-wrapper {
+  @extend %responsive-flex;
+}
+
+.wp-block-search__button {
+  @extend .button;
+}
+
+/** Footer **/
+.site-footer {
+  font-size: 0.85em;
+}
+
+.site-info {
+  @extend %responsive-flex;
+}
+
+/** Posts **/
+
+.post {
+  @extend %major-border;
+}
+
+.entry-header {
+  @include standard-padding;
+
+  background-color: $primary-color;
+  color: $white;
+  border-bottom: 2px solid $dark;
+
+  @extend %responsive-flex;
+
+  a {
+    color: $white;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .entry-title {
+    margin-bottom: 0;
+  }
+}
+
+.entry-content {
+  @include standard-padding;
+}
+
+.entry-footer {
+  @include standard-padding;
+  font-size: 0.85rem;
+
+  @extend %responsive-flex;
+}
+
+/** Pride **/
+.pride {
+  .site-title a {
+    @extend %progress;
+    -webkit-background-clip: text;
+  }
+
+  .entry-header, .job-header, .button {
+    @extend %rainbow;
+  }
+}
